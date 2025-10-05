@@ -1,0 +1,37 @@
+<div
+  class="card max-w-sm mx-auto sm:w-[200px] cursor-pointer overflow-hidden bg-green-200 border border-green-900 rounded-t-3xl shadow-lg p-2 relative"
+>
+  <div [routerLink]="['/details', product._id, product.slug]">
+    <img
+      [src]="product.imageCover"
+      [alt]="product.title"
+      class="w-full rounded-t-4xl object-contain"
+    />
+
+    <div class="p-2">
+      <h3 class="text-green-700">{{ product.category?.name }}</h3>
+      <h4 class="font-bold line-clamp-1">{{ product.title }}</h4>
+      <div class="flex justify-between mt-3">
+        <span>{{ product.price }} EGP</span>
+        <span>
+          <i class="fa fa-star text-yellow-400"></i>
+          {{ product.ratingsAverage }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <span
+    (click)="toggleWishlist(product._id, $event)"
+    class="absolute top-5 right-5 text-xl cursor-pointer"
+    [class.text-red-500]="product.isInWishlist"
+    [class.text-gray-400]="!product.isInWishlist"
+    title="Toggle wishlist"
+  >
+    <i class="fa-solid fa-heart"></i>
+  </span>
+
+  <button (click)="addProductItemToCart(product._id)" class="btn-main w-full">
+    Add to Cart
+  </button>
+</div>

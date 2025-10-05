@@ -1,0 +1,37 @@
+<section>
+  <div class="container">
+    <h1 class="text-center text-5xl text-white font-medium py-9">Check Out</h1>
+
+    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">
+      <app-input
+        [element]="'text'"
+        [control]="checkOutForm.get('shippingAddress')?.get('details')"
+        [idInput]="'details'"
+        [labelInput]="'Details'"
+      ></app-input>
+      <app-input
+        [element]="'input'"
+        [control]="checkOutForm.get('shippingAddress')?.get('phone')"
+        [idInput]="'phone'"
+        [labelInput]="'Phone'"
+        [typeInput]="'tel'"
+      ></app-input>
+      <app-input
+        [element]="'input'"
+        [control]="checkOutForm.get('shippingAddress')?.get('city')"
+        [idInput]="'city'"
+        [labelInput]="'City'"
+        [typeInput]="'text'"
+      ></app-input>
+
+      <div class="all-btn flex justify-between items-center space-x-10">
+        <button type="submit" class="btn-main" (click)="setPayment('visa')">
+          Payment By Visa
+        </button>
+        <button type="submit" class="btn-main" (click)="setPayment('cash')">
+          Payment By Cash
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

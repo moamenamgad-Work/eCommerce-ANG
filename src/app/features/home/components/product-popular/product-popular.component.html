@@ -1,0 +1,18 @@
+<section id="product-popular" class="py-8">
+  <div class="container py-10">
+    <h2 class="py-4 text-white mb-16 text-center font-bold text-5xl">
+      popular Products
+    </h2>
+
+    <div
+      class="productDel grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4"
+    >
+      @for (product of productData.slice(0, 15); track trackById) {
+      <app-card
+        [product]="product"
+        (toggle)="toggleWishlist($event)"
+      ></app-card>
+      }
+    </div>
+  </div>
+</section>

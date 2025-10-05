@@ -1,0 +1,81 @@
+<section id="login" class="no-h py-16">
+  <h1 class="text-5xl font-medium text-white text-center mb-10">Login Now</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="submitform()">
+    <div class="form form-design">
+      <div class="relative my-5">
+        <input formControlName="email" type="email" id="email" class="main-input peer" placeholder="" />
+        <label for="email" class="main-label">Email :</label>
+        @let emailControl = loginForm.get('email'); @if (emailControl?.errors
+        && emailControl?.touched ) {
+        <div role="alert">
+          <div class="p-4 rounded-2xl border border-red-300 bg-red-50 shadow-md">
+            <p class="font-medium text-red-700 mb-2">
+              Please fix the following errors:
+            </p>
+
+            <ul class="list-disc list-inside text-sm text-red-600 space-y-1">
+              @if (emailControl?.getError('required')) {
+              <li>Email is required.</li>
+              } @else if (emailControl?.getError('email')) {
+              <li>Please enter a valid email address.</li>
+              <li>Email must follow the format: example@gmail.com</li>
+              <li>Email must include at least one lowercase letter.</li>
+              <li>Email must include at least one special character @.</li>
+              }
+            </ul>
+          </div>
+        </div>
+        }
+      </div>
+      <div class="relative my-5">
+        <input formControlName="password" [type]="flag?'password': 'text' " id="password" class="main-input peer"
+          placeholder="" />
+        <label for="password" class="main-label">Password :</label>
+        <span (click)="flag=!flag" class="absolute top-7 end-4 -translate-1/2 cursor-pointer">
+          @if (flag) {
+          <i class="fas fa-eye"></i>
+          }@else{
+          <i class="fas fa-eye-slash"></i>
+          }
+        </span>
+
+        @let passwordControl = loginForm.get('password'); @if
+        (passwordControl?.errors && passwordControl?.touched ) {
+        <div role="alert">
+          <div class="p-4 rounded-2xl border border-red-300 bg-red-50 shadow-md">
+            <p class="font-medium text-red-700 mb-2">
+              Please fix the following errors:
+            </p>
+
+            <ul class="list-disc list-inside text-sm text-red-600 space-y-1">
+              @if (passwordControl?.getError('required')) {
+              <li>Password is required.</li>
+              } @else if (passwordControl?.getError('pattern')) {
+              <li>Password must contain at least one uppercase letter.</li>
+              <li>Password must contain at least one lowercase letter.</li>
+              <li>Password must contain at least one number.</li>
+              <li>Password must contain at least one special character (@).</li>
+              <li>Password must be at least 8 characters long.</li>
+              }
+            </ul>
+          </div>
+        </div>
+        }
+      </div>
+      <div class="fogot flex justify-between items-center mb-4">
+        <span class="text-green-800 font-bold"><a routerLink="/forgot">Forgot password</a> ?...</span>
+        <span class="text-lg text-gray-600">Greate Account => <a routerLink="/register"
+            class="text-green-800 font-bold">SingUp</a>
+        </span>
+      </div>
+      <button [disabled]="isloading" type="submit" class="btn-main w-full text-lg">
+        login @if (isloading) {
+        <span><i class="fa-solid fa-spinner fa-spin"></i></span>
+        }
+      </button>
+      @if (msgError) {
+      <p class="text-center text-red-900 bg-red-200 mt-4 p-3">{{ msgError }}</p>
+      }
+    </div>
+  </form>
+</section>

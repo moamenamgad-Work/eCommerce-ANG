@@ -1,0 +1,14 @@
+.card button {
+  transform: translatey(120%);
+  transition: all 0.6s;
+}
+.card:hover button {
+  transform: translatey(0);
+}
+.card:hover .heart {
+  opacity: 1;
+}
+
+.card .heart {
+  transition: all 1s;
+}

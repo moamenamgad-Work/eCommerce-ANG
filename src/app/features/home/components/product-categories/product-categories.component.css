@@ -1,0 +1,9 @@
+.container h2::before {
+  content: "";
+  background-color: rgb(9, 112, 9);
+  width: 300px;
+  height: 2px;
+  position: absolute;
+  bottom: 10%;
+  left: 35%;
+}

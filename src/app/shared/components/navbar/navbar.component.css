@@ -1,0 +1,16 @@
+i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  transition: all 1s;
+}
+.list li {
+  border-radius: 40px;
+  transition: background-color 0.5s;
+}
+.list li:hover {
+  background-color: #064e3b;
+}

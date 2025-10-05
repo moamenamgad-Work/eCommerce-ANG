@@ -1,0 +1,85 @@
+<div class="relative my-5">
+  @if (element==='input') {
+  <input
+    [class]="{
+      'border-green-700 ': control?.valid,
+      'border-red-900 ': control?.invalid && control?.touched
+    }"
+    [formControl]="control"
+    [type]="typeInput || (flag ? 'password' : 'text')"
+    [id]="idInput"
+    class="main-input peer"
+    placeholder=""
+  />
+  }@else if( element==='text') {
+  <textarea
+    [class]="{
+      'border-green-700 ': control?.valid,
+      'border-red-900 ': control?.invalid && control?.touched
+    }"
+    [formControl]="control"
+    [id]="idInput"
+    class="main-input peer"
+    placeholder=""
+  ></textarea>
+  }
+
+  <label
+    [class]="{
+      'text-green-700 ': control?.valid,
+      'text-red-900 ': control?.invalid && control?.touched
+    }"
+    [for]="idInput"
+    class="main-label"
+    >{{ labelInput }} :</label
+  >
+
+  @if (typeInput==="password"|| typeInput==="rePassword") {
+  <span
+    (click)="flag = !flag"
+    class="absolute top-7 end-4 -translate-1/2 cursor-pointer"
+  >
+    @if (flag) {
+    <i class="fas fa-eye"></i>
+    }@else{
+    <i class="fas fa-eye-slash"></i>
+    }
+  </span>
+  } @if (control?.errors && control?.touched ) {
+  <div role="alert">
+    <div class="p-4 rounded-2xl border border-red-300 bg-red-50 shadow-md">
+      <p class="font-medium text-red-700 mb-2">
+        Please fix the following errors:
+      </p>
+
+      <ul class="list-disc list-inside text-sm text-red-600 space-y-1">
+        @if (control?.getError('required')) {
+        <li>{{ labelInput }} is required.</li>
+        } @if (control?.getError('minlength')) {
+        <li>{{ labelInput }} must be at least 6 characters long.</li>
+        } @if (control?.getError('maxlength')) {
+        <li>{{ labelInput }} must not exceed 20 characters.</li>
+        } @if (control?.getError('email')) {
+        <li>Please enter a valid email address.</li>
+        <li>Email must follow the format: example@gmail.com</li>
+        <li>Email must include at least one lowercase letter.</li>
+        <li>Email must include at least one special character (@).</li>
+        } @if (control?.getError('pattern') && labelInput === 'Password') {
+        <li>Password must contain at least one uppercase letter.</li>
+        <li>Password must contain at least one lowercase letter.</li>
+        <li>Password must contain at least one number.</li>
+        <li>Password must contain at least one special character (@).</li>
+        <li>Password must be at least 8 characters long.</li>
+        } @if (control?.getError('pattern') && labelInput === 'Phone') {
+        <li>Phone number is required.</li>
+        <li>
+          Please enter a valid Egyptian phone number (e.g. 010----------).
+        </li>
+        } @if (control?.getError('mismatch')) {
+        <li>Passwords do not match.</li>
+        }
+      </ul>
+    </div>
+  </div>
+  }
+</div>

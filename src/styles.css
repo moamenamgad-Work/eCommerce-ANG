@@ -1,0 +1,81 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@utility container {
+  margin-inline: auto;
+}
+@layer components {
+  .main-input {
+    @apply block rounded-2xl px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 border border-green-700 appearance-none focus:ring-0 focus:border-green-600;
+  }
+  .main-label {
+    @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto;
+  }
+  .form-design {
+    @apply md:w-[75%] lg:w-1/2 mx-auto md:px-10 py-3 md:rounded-4xl shadow-md bg-green-400;
+  }
+}
+
+:root {
+  --main-color: #0aad0a;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  --font-family: "Edu NSW ACT Cursive", cursive;
+  --rating-color: #ffc908;
+}
+body {
+  font-family: var(--font-family) !important;
+}
+
+.container {
+  margin: auto;
+}
+
+.btn-main {
+  background-color: rgb(18, 175, 18);
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  width: 100%;
+}
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+.btn-main:disabled:hover {
+  background-color: #ccc;
+}
+.btn-main:hover {
+  background-color: #18f718;
+}
+
+section {
+  min-height: 100vh;
+  background: linear-gradient(270deg, #4ade80, #22d3ee, #22c55e);
+  background-size: 600% 600%;
+  animation: gradientMove 10s ease infinite;
+}
+
+.no-h {
+  height: auto;
+  min-height: unset;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

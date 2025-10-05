@@ -1,0 +1,40 @@
+<section>
+  <div class="container pb-14">
+    <h1 class="title text-center text-4xl font-medium py-15 text-white">
+      WishList <i class="fa-solid fa-heart text-red-500"></i>
+    </h1>
+
+    <div *ngIf="wishlistData.length > 0; else emptyState">
+      <div class="text-center mb-6 md:w-1/5 mx-auto">
+        <button
+          (click)="addAllToCart()"
+          class="bg-green-500 cursor-pointer btn-main text-white px-6 py-2 rounded-lg"
+        >
+          Add All to Cart
+        </button>
+      </div>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        @for (item of wishlistData; track trackById) {
+        <app-card
+          [product]="item"
+          (toggle)="toggleWishlist($event)"
+          (wishlistChanged)="onWishlistChanged($event)"
+        ></app-card>
+        }
+      </div>
+    </div>
+
+    <ng-template #emptyState>
+      <div class="text-center py-10">
+        <p class="text-white text-2xl mb-4">Your wishlist is empty 💔</p>
+        <a
+          routerLink="/products"
+          class="btn-main text-white px-6 py-2 rounded-lg"
+        >
+          Go to Products
+        </a>
+      </div>
+    </ng-template>
+  </div>
+</section>

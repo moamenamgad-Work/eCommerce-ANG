@@ -1,0 +1,53 @@
+<section class="py-15">
+  <div class="container">
+    <h2 class="text-4xl text-white font-medium pb-7 text-center">
+      Product Details
+    </h2>
+    <div
+      class="bg-green-300 p-3 rounded-4xl grid sm:grid-cols-12 items-center gap-4"
+    >
+      <div class="col-span-12 md:col-span-4">
+        <img
+          [src]="selectedImage"
+          class="w-full sm:w-full h-[400px] rounded-4xl"
+          [alt]="Delprpduct.title"
+        />
+        <div class="imgs flex gap-2 mt-2">
+          @for (img of Delprpduct.images; track Delprpduct._id) {
+          <img
+            [src]="img"
+            [alt]="Delprpduct.title"
+            class="w-full md:w-20 h-32 sm:h-20 rounded-xl cursor-pointer"
+            [class.border-green-500]="img === selectedImage"
+            (click)="changeImage(img)"
+          />
+          }
+        </div>
+      </div>
+      <div class="details col-span-12 sm:col-span-8">
+        <h3 class="font-medium text-3xl">
+          {{ Delprpduct.title }}
+        </h3>
+        <p class="my-3 text-md">
+          {{ Delprpduct.description }}
+        </p>
+        <span class="text-md text-gray-200">{{
+          Delprpduct.category.name
+        }}</span>
+        <div class="flex pt-3 justify-between items-center">
+          <span>{{ Delprpduct.price }}EGP</span>
+          <span>
+            <i class="fa-solid fa-star text-amber-300"></i>
+            {{ Delprpduct.ratingsAverage }}
+          </span>
+        </div>
+        <button
+          (click)="addProductItemToCart(Delprpduct._id)"
+          class="btn-main w-full mt-4"
+        >
+          +add to card
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

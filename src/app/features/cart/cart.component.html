@@ -1,0 +1,85 @@
+<section class="p-5">
+  <div class="container grid sm:grid-cols-12 gap-8 items-start">
+    <div
+      class="col-span-12 md:col-span-8 p-4 rounded-2xl bg-green-500 shadow-xl text-white mx-auto"
+    >
+      <div class="border-b pb-3 flex items-center justify-between">
+        <div class="title">
+          <h1 class="text-3xl inline me-2">Card</h1>
+          <sub
+            ><span class="text-green-800 font-bold"
+              >{{ cartUserData.products.length }} Item</span
+            ></sub
+          >
+        </div>
+        <span (click)="removeAllItems()"
+          ><i
+            class="fas fa-trash-can text-2xl cursor-pointer hover:text-red-600"
+          ></i
+        ></span>
+      </div>
+      @if(cartUserData.products.length>0){ @for (item of cartUserData.products;
+      track item.product._id) {
+      <div
+        class="big-card p-3 my-3 rounded-xl bg-green-400 shadow-xl grid sm:grid-cols-12"
+      >
+        <div class="img col-span-12 md:col-span-1">
+          <img
+            [src]="item.product.imageCover"
+            class="w-full py-5"
+            [alt]="item.product.title"
+          />
+        </div>
+        <div
+          class="ps-4 col-span-11 flex justify-between items-center space-x-6"
+        >
+          <div class="inner">
+            <h3 class="text-xl">{{ item.product.title }}</h3>
+            <div class="count my-3 flex items-center space-x-3">
+              <div
+                class="bg-green-400 border rounded-xl flex items-center space-x-7 py-1 px-2"
+              >
+                <button
+                  (click)="updateCount(item.product._id, item.count - 1)"
+                  class="cursor-pointer hover:bg-red-800 hover:rounded-md"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span>{{ item.count }}</span>
+                <button
+                  (click)="updateCount(item.product._id, item.count + 1)"
+                  class="cursor-pointer hover:bg-green-600 hover:rounded-md"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <button
+                (click)="removeItem(item.product._id)"
+                class="cursor-pointer"
+              >
+                <i class="fas fa-trash-can hover:text-red-600"></i>
+              </button>
+            </div>
+          </div>
+          <span>{{ item.price * item.count }} EGP</span>
+        </div>
+      </div>
+      } }@else {
+      <h2 class="text-center text-3xl py-8">Your cart is empty 🛒</h2>
+      <button class="btn-main" [routerLink]="'/products'">Go Shop Now</button>
+      }
+    </div>
+    <div
+      class="col-span-12 md:col-span-4 p-4 rounded-2xl bg-green-500 shadow-xl text-white sticky top-4"
+    >
+      <h2 class="text-3xl mb-4">Order</h2>
+      <div class="price flex justify-between items-center mb-3">
+        <span> Total Price </span>
+        <span> {{ cartUserData.totalCartPrice }} </span>
+      </div>
+      <button [routerLink]="['/checkout', cartUserData._id]" class="btn-main">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+</section>
