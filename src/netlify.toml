@@ -1,0 +1,9 @@
+[build]
+command ="ng build"
+functions="netlify/functions"
+publish="dist/ecomrce-project-1/browser"
+
+[[redirects]]
+from="/*"
+to="/index.html"
+status=200

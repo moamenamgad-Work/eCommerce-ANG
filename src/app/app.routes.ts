@@ -86,6 +86,7 @@ export const routes: Routes = [
             (c) => c.DetailsComponent
           ),
         title: 'Details Page',
+        data: { renderMode: 'client' },
       },
       {
         path: 'details/:id',
@@ -94,6 +95,7 @@ export const routes: Routes = [
             (c) => c.DetailsComponent
           ),
         title: 'Details Page',
+        data: { renderMode: 'client' },
       },
       {
         path: 'products',
@@ -110,6 +112,7 @@ export const routes: Routes = [
             (c) => c.CheckoutComponent
           ),
         title: 'Checkout Page',
+        data: { renderMode: 'client' },
       },
       {
         path: 'allorders',
