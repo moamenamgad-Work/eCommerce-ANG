@@ -1,5 +1,5 @@
 [build]
-command ="ng build"
+command = "npm install --legacy-peer-deps && ng run ecomrce-project-1:prerender"
 functions="netlify/functions"
 publish="dist/ecomrce-project-1/browser"
 
