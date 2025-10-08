@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="text-center text-5xl text-white font-medium py-9">Check Out</h1>
 
-    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">
+    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()" class="mx-9">
       <app-input
         [element]="'text'"
         [control]="checkOutForm.get('shippingAddress')?.get('details')"
@@ -24,11 +24,21 @@
         [typeInput]="'text'"
       ></app-input>
 
-      <div class="all-btn flex justify-between items-center space-x-10">
-        <button type="submit" class="btn-main" (click)="setPayment('visa')">
+      <div
+        class="all-btn flex flex-col md:flex-wrap justify-between items-center space-x-10"
+      >
+        <button
+          type="submit"
+          class="btn-main w-full mx-auto"
+          (click)="setPayment('visa')"
+        >
           Payment By Visa
         </button>
-        <button type="submit" class="btn-main" (click)="setPayment('cash')">
+        <button
+          type="submit"
+          class="btn-main w-full mx-auto mt-4"
+          (click)="setPayment('cash')"
+        >
           Payment By Cash
         </button>
       </div>

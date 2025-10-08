@@ -9,7 +9,9 @@
       class="w-1/2 block rounded-2xl mb-4 border-2 border-green-700 focus:border-green-600 focus:outline-none focus:ring mx-auto"
     />
 
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div
+      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mx-10 md:mx-0"
+    >
       @for (product of productData | paginate: { id: 'foo', itemsPerPage:
       pageSize, currentPage: p, totalItems: total } | search:text; track
       product._id) {

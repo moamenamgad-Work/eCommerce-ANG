@@ -130,9 +130,10 @@
             class="block relative py-2 px-3 text-3xl hover:text-red-500 rounded-sm md:p-0"
             aria-current="page"
             ><i class="fa-solid fa-heart"></i>
-            <span class="absolute -top-8 -end-5 text-red-600 p-2 scale-50">{{
-              wishlistCount
-            }}</span></a
+            <span
+              class="absolute -top-5 start-8 md:-top-8 md:-end-5 text-red-600 p-2 scale-50"
+              >{{ wishlistCount }}</span
+            ></a
           >
         </li>
         <li class="px-2 py-2" routerLinkActive="text-[#064e3b]">
@@ -141,7 +142,9 @@
             class="block relative py-2 px-3 text-3xl hover:text-green-800 duration-200 rounded-sm md:p-0"
             aria-current="page"
             ><i class="fa-solid fa-basket-shopping"></i>
-            <span class="absolute -top-7 -end-5 text-[#064e3b] p-2 scale-50">
+            <span
+              class="absolute -top-5 start-8 md:-top-8 md:end-3 text-[#064e3b] p-2 scale-50"
+            >
               {{ cartCount }}
             </span>
           </a>

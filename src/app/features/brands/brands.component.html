@@ -1,30 +1,40 @@
 <section>
-    <div class="container py-15">
-        <h2 class="text-center text-5xl font-medium text-white">Brands</h2>
+  <div class="container py-15">
+    <h2 class="text-center text-5xl font-medium text-white">Brands</h2>
 
-        <div>
-            <div class="brandDel pt-10 container grid mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                @for (item of brandData | paginate: { id: 'foo', itemsPerPage:
-                pageSize, currentPage: p, totalItems: total }; track item._id) {
-                <div
-                    class="max-w-sm mx-auto w-full cursor-pointer overflow-hidden bg-green-200 border border-green-900 rounded-t-3xl shadow-lg p-2">
-                    <div>
-                        <img class="w-full h-[200px] rounded-t-4xl object-contain" [src]="item.image"
-                            [alt]="item.name" />
+    <div class="mx-7">
+      <div
+        class="brandDel pt-10 container grid mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4"
+      >
+        @for (item of brandData | paginate: { id: 'foo', itemsPerPage: pageSize,
+        currentPage: p, totalItems: total }; track item._id) {
+        <div
+          class="max-w-sm mx-auto w-full cursor-pointer overflow-hidden bg-green-200 border border-green-900 rounded-t-3xl shadow-lg p-2"
+        >
+          <div>
+            <img
+              class="w-full h-[200px] rounded-t-4xl object-contain"
+              [src]="item.image"
+              [alt]="item.name"
+            />
 
-                        <div class="p-2">
-                            <h4 class="mb-2 text-lg text-center font-bold line-clamp-1">
-                                {{ item.name }}
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                }
+            <div class="p-2">
+              <h4 class="mb-2 text-lg text-center font-bold line-clamp-1">
+                {{ item.name }}
+              </h4>
             </div>
+          </div>
         </div>
-        <div class="text-center mt-5 text-lg">
-            <pagination-controls id="foo" (pageChange)="getBrand($event)" class="my-pagination">
-            </pagination-controls>
-        </div>
+        }
+      </div>
     </div>
+    <div class="text-center mt-5 text-lg">
+      <pagination-controls
+        id="foo"
+        (pageChange)="getBrand($event)"
+        class="my-pagination"
+      >
+      </pagination-controls>
+    </div>
+  </div>
 </section>

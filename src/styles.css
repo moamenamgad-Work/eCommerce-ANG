@@ -14,7 +14,7 @@
     @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto;
   }
   .form-design {
-    @apply md:w-[75%] lg:w-1/2 mx-auto md:px-10 py-3 md:rounded-4xl shadow-md bg-green-400;
+    @apply md:w-[75%] lg:w-1/2 mx-5 md:mx-auto md:px-10 py-3 rounded-4xl shadow-md bg-green-400;
   }
 }
 
@@ -43,7 +43,6 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.5s;
-  width: 100%;
 }
 .btn-main:disabled {
   cursor: not-allowed;
