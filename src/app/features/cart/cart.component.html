@@ -1,10 +1,14 @@
-<section class="p-5">
-  <div class="container grid sm:grid-cols-12 gap-8 items-start">
+<section class="p-4 sm:p-6 lg:p-10 bg-green-50 min-h-screen">
+  <div
+    class="container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-start"
+  >
     <div
-      class="col-span-12 md:col-span-8 p-4 rounded-2xl bg-green-500 shadow-xl text-white mx-auto"
+      class="col-span-12 lg:col-span-8 bg-green-500 rounded-2xl shadow-xl text-white p-5 sm:p-7"
     >
-      <div class="border-b pb-3 flex items-center justify-between">
-        <div class="title">
+      <div
+        class="border-b border-green-300 pb-3 flex flex-row justify-between items-center gap-3"
+      >
+        <div class="title text-center sm:text-left">
           <h1 class="text-3xl inline me-2">Card</h1>
           <sub
             ><span class="text-green-800 font-bold"
@@ -12,74 +16,96 @@
             ></sub
           >
         </div>
-        <span (click)="removeAllItems()"
-          ><i
-            class="fas fa-trash-can text-2xl cursor-pointer hover:text-red-600"
-          ></i
-        ></span>
+        <span
+          (click)="removeAllItems()"
+          class="cursor-pointer hover:text-red-600 transition"
+        >
+          <i class="fas fa-trash-can text-2xl"></i>
+        </span>
       </div>
-      @if(cartUserData.products.length>0){ @for (item of cartUserData.products;
-      track item.product._id) {
+
+      @if(cartUserData.products.length > 0) { @for (item of
+      cartUserData.products; track item.product._id) {
       <div
-        class="big-card p-3 my-3 mx-10 sm:mx-0 rounded-xl bg-green-400 shadow-xl grid sm:grid-cols-12"
+        class="grid grid-cols-1 sm:grid-cols-12 gap-4 bg-green-400 rounded-xl shadow-lg p-4 my-4 transition-transform hover:scale-[1.01]"
       >
-        <div class="img col-span-12 md:col-span-1">
+        <div class="col-span-12 sm:col-span-3 flex justify-center">
           <img
             [src]="item.product.imageCover"
-            class="w-full py-5"
+            class="w-28 sm:w-24 md:w-28 rounded-xl object-contain"
             [alt]="item.product.title"
           />
         </div>
+
         <div
-          class="ps-4 col-span-11 flex justify-between items-center space-x-6"
+          class="col-span-12 sm:col-span-9 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3"
         >
           <div class="inner">
-            <h3 class="text-xl">{{ item.product.title }}</h3>
-            <div class="count my-3 flex items-center space-x-3">
+            <h3 class="text-lg sm:text-xl font-semibold mb-1">
+              {{ item.product.title }}
+            </h3>
+
+            <div class="count flex items-center space-x-3 mt-2">
               <div
-                class="bg-green-400 border rounded-xl flex items-center space-x-7 py-1 px-2"
+                class="bg-green-500 border border-green-700 rounded-xl flex items-center space-x-4 py-1 px-3"
               >
                 <button
                   (click)="updateCount(item.product._id, item.count - 1)"
-                  class="cursor-pointer hover:bg-red-800 hover:rounded-md"
+                  class="hover:bg-red-700 hover:text-white rounded-md p-1 transition"
                 >
                   <i class="fas fa-minus"></i>
                 </button>
-                <span>{{ item.count }}</span>
+                <span class="text-lg font-semibold">{{ item.count }}</span>
                 <button
                   (click)="updateCount(item.product._id, item.count + 1)"
-                  class="cursor-pointer hover:bg-green-600 hover:rounded-md"
+                  class="hover:bg-green-600 hover:text-white rounded-md p-1 transition"
                 >
                   <i class="fas fa-plus"></i>
                 </button>
               </div>
+
               <button
                 (click)="removeItem(item.product._id)"
-                class="cursor-pointer"
+                class="cursor-pointer hover:text-red-600 transition"
               >
-                <i class="fas fa-trash-can hover:text-red-600"></i>
+                <i class="fas fa-trash-can"></i>
               </button>
             </div>
           </div>
-          <span>{{ item.price * item.count }} EGP</span>
+
+          <span class="font-semibold text-lg whitespace-nowrap">
+            {{ item.price * item.count }} EGP
+          </span>
         </div>
       </div>
-      } }@else {
-      <h2 class="text-center text-3xl py-8">Your cart is empty 🛒</h2>
-      <button class="btn-main w-full" [routerLink]="'/products'">
+      } } @else {
+      <h2 class="text-center text-2xl sm:text-3xl py-8">
+        Your cart is empty 🛒
+      </h2>
+      <button class="btn-main w-full mt-4" [routerLink]="'/products'">
         Go Shop Now
       </button>
       }
     </div>
+
     <div
-      class="col-span-12 md:col-span-4 p-4 rounded-2xl bg-green-500 shadow-xl text-white sticky top-4"
+      class="col-span-12 lg:col-span-4 bg-green-500 rounded-2xl shadow-xl text-white p-5 sm:p-7 lg:sticky lg:top-6"
     >
-      <h2 class="text-3xl mb-4">Order</h2>
-      <div class="price flex justify-between items-center mb-3">
-        <span> Total Price </span>
-        <span> {{ cartUserData.totalCartPrice }} </span>
+      <h2
+        class="text-2xl sm:text-3xl font-semibold mb-5 text-center lg:text-left"
+      >
+        Order Summary
+      </h2>
+
+      <div class="price flex justify-between items-center mb-4 text-lg">
+        <span>Total Price</span>
+        <span class="font-semibold">{{ cartUserData.totalCartPrice }} EGP</span>
       </div>
-      <button [routerLink]="['/checkout', cartUserData._id]" class="btn-main">
+
+      <button
+        [routerLink]="['/checkout', cartUserData._id]"
+        class="btn-main w-full text-center py-2 mt-2"
+      >
         Proceed to Checkout
       </button>
     </div>
